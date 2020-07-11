@@ -38,7 +38,7 @@ export class SpotifyService {
 
     get(endPoint: string): Observable<any> {
         const headers = new HttpHeaders({
-            Authorization: 'Bearer BQAuF1DjphvSLI-zt4Lc88fOWLmvmCihzpuhUSzPScMcsoL9DPfikfdWGL4tDY86-mRQoVbMr85RH-wjCV8'
+            Authorization: 'Bearer BQBOjPMA_VZuTCuTaaRKbcf4foTeN-K_bJVb1fIDA6_mSeBZK5EC4BzCWTrWh1uzEE_YyiVLZLvNIvCx6Z8'
         });
         return this.httpClient.get(endPoint, { headers });
     }
