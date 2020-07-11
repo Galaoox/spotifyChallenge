@@ -1,43 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from '../../../services/spotify.service';
 
 @Component({
-  selector: 'app-index-lanzamientos',
-  templateUrl: './index-lanzamientos.component.html',
-  styleUrls: ['./index-lanzamientos.component.scss']
+    selector: 'app-index-lanzamientos',
+    templateUrl: './index-lanzamientos.component.html',
+    styleUrls: ['./index-lanzamientos.component.scss'],
+    providers: [SpotifyService]
 })
 export class IndexLanzamientosComponent implements OnInit {
-  datos = this.mockDatos();
+    lanzamientos = [];
+    urlSiguiente = null;
+    urlAnterior = null;
 
 
-  constructor() { }
+    constructor(private spotifyService: SpotifyService) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.obtenerDatos();
+    }
 
 
+    obtenerDatos() {
+        this.spotifyService.obtenerLanzamientos().subscribe(
+            (res: any) => {
+                console.log(res);
+                this.lanzamientos = res.items;
+                this.urlAnterior = res.previous;
+                this.urlSiguiente = res.next;
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
 
 
-  mockDatos() {
-    return [
-      {
-        nombre: 'pruebas 1'
-      },
-      {
-        nombre: 'pruebas 2'
-      },
-      {
-        nombre: 'pruebas 3'
-      },
-      {
-        nombre: 'pruebas 4'
-      },
-      {
-        nombre: 'pruebas 6'
-      },
-      {
-        nombre: 'pruebas 6'
-      }
-    ];
-  }
+    verDiscografia(artistaId) {
+        console.log(artistaId);
+    }
+
+
 
 }
