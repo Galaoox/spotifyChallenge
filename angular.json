@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spotifyChallenge"
+    }
+  },
+  "defaultProject": "spotifyChallenge",
+  "cli": {
+    "analytics": "99ae9c9b-b18c-4228-9012-f1688f2656e0"
+  }
 }
