@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'canciones/',
     loadChildren: () => import('./views/canciones/canciones.module').then(m => m.CancionesModule)
+  },
+  {
+    path: 'discografia/',
+    loadChildren: () => import('./views/discografia/discografia.module').then(m => m.DiscografiaModule)
   }
 ];
 
