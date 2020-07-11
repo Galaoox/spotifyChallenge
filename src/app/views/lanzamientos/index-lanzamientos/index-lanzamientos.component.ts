@@ -11,6 +11,7 @@ export class IndexLanzamientosComponent implements OnInit {
     lanzamientos = [];
     urlSiguiente = null;
     urlAnterior = null;
+    cargando = false;
 
 
     constructor(private spotifyService: SpotifyService) { }
@@ -21,15 +22,20 @@ export class IndexLanzamientosComponent implements OnInit {
 
 
     obtenerDatos() {
+        this.cargando = true;
         this.spotifyService.obtenerLanzamientos().subscribe(
             (res: any) => {
-                console.log(res);
+
+                this.cargando = false;
+
                 this.lanzamientos = res.items;
                 this.urlAnterior = res.previous;
                 this.urlSiguiente = res.next;
+
             },
             (error) => {
                 console.log(error);
+                this.cargando = false;
             }
         );
     }
