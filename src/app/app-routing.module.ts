@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./views/lanzamientos/lanzamientos.module').then(m => m.LanzamientosModule)
+  },
+  {
+    path: 'artistas/',
+    loadChildren: () => import('./views/artistas/artistas.module').then(m => m.ArtistasModule)
   }
 ];
 
