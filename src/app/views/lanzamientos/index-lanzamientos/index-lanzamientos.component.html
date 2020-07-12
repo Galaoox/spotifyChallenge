@@ -1,4 +1,4 @@
-<h1 class="text-center text-light mt-4">New releases</h1>
+<h1 class="text-center text-light mt-4">Nuevos lanzamientos</h1>
 <div class="container" *ngIf="!cargando; else spinner">
     <ng-container *ngIf="lanzamientos!.length; else mensaje">
         <div class="d-flex ">
@@ -18,7 +18,7 @@
         </div>
     </ng-container>
     <ng-template #mensaje>
-        <app-mensaje-alerta texto="No se encotraron releases"></app-mensaje-alerta>
+        <app-mensaje-alerta texto="No se encotraron nuevos lanzamientos"></app-mensaje-alerta>
     </ng-template>
 </div>
 
