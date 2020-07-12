@@ -21,9 +21,9 @@ export class IndexLanzamientosComponent implements OnInit {
     }
 
 
-    obtenerDatos() {
+    obtenerDatos(endPoint = null) {
         this.cargando = true;
-        this.spotifyService.obtenerLanzamientos().subscribe(
+        this.spotifyService.obtenerLanzamientos(endPoint).subscribe(
             (res: any) => {
 
                 this.cargando = false;
@@ -45,6 +45,11 @@ export class IndexLanzamientosComponent implements OnInit {
         console.log(artistaId);
     }
 
+
+    cambiarLanzamientos(evento: boolean) {
+        const url = evento ? this.urlSiguiente : this.urlAnterior;
+        this.obtenerDatos(url);
+    }
 
 
 }
