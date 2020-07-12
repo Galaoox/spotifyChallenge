@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/canciones/canciones.module').then(m => m.CancionesModule)
     },
     {
-        path: 'discografia',
+        path: 'discografia/:id',
         loadChildren: () => import('./views/discografia/discografia.module').then(m => m.DiscografiaModule)
     },
     { path: '', pathMatch: 'full', redirectTo: '' },
