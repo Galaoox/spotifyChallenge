@@ -28,30 +28,37 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
     }
 
     obtenerDatos(termino, endPoint = null) {
+
         this.cargando = true;
-        this.spotifyService.obtenerArtistas(termino, endPoint).subscribe(
-            (res: any) => {
+        this.artistas = [];
+        if (termino && termino !== '') {
+            this.spotifyService.obtenerArtistas(termino, endPoint).subscribe(
+                (res: any) => {
 
-                this.cargando = false;
+                    this.cargando = false;
 
-                this.artistas = res.items;
-                this.urlAnterior = res.previous;
-                this.urlSiguiente = res.next;
+                    this.artistas = res.items;
+                    this.urlAnterior = res.previous;
+                    this.urlSiguiente = res.next;
 
-            },
-            (error) => {
-                console.log(error);
-                this.cargando = false;
-            }
-        );
+                },
+                (error) => {
+                    console.log(error);
+                    this.cargando = false;
+                }
+            );
+        } else {
+            this.cargando = false;
+        }
     }
 
     escucharBuscador() {
-        this.buscadorSuscripcion = this.router.params.subscribe((params) => {
+        this.buscadorSuscripcion = this.router.queryParams.subscribe((params) => {
             this.termino = params.termino;
             this.urlAnterior = null;
             this.urlSiguiente = null;
             this.obtenerDatos(this.termino);
+
         });
     }
 
