@@ -25,17 +25,12 @@ export class SpotifyService {
             'Content-Type': 'application/x-www-form-urlencoded;',
             skip: 'true'
         });
-
-
-
         return this.httpClient.post('https://accounts.spotify.com/api/token', params, { headers });
-
     }
 
     obtenerToken() {
         return localStorage.getItem('token');
     }
-
 
     get(endPoint: string): Observable<any> {
         const token = this.obtenerToken();
@@ -45,8 +40,6 @@ export class SpotifyService {
         return this.httpClient.get(endPoint, { headers });
     }
 
-
-
     obtenerLanzamientos(endPoint = null) {
         const url = endPoint ? endPoint : 'https://api.spotify.com/v1/browse/new-releases?limit=12';
         return this.get(url).pipe(
@@ -54,11 +47,17 @@ export class SpotifyService {
         );
     }
 
-
     obtenerCanciones(termino: string, endPoint = null) {
         const url = endPoint ? endPoint : `https://api.spotify.com/v1/search?q=${termino}&type=track&limit=8`;
         return this.get(url).pipe(
             map(data => data.tracks)
+        );
+    }
+
+    obtenerArtistas(termino: string, endPoint = null) {
+        const url = endPoint ? endPoint : `https://api.spotify.com/v1/search?q=${termino}&type=artist&limit=12`;
+        return this.get(url).pipe(
+            map(data => data.artists)
         );
     }
 
