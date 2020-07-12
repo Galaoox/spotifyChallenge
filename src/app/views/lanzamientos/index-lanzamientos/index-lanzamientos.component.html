@@ -2,7 +2,7 @@
 <div class="container" *ngIf="!cargando; else spinner">
     <ng-container *ngIf="lanzamientos!.length; else mensaje">
         <div class="d-flex ">
-            <app-botones class="ml-auto mb-5"></app-botones>
+            <app-botones [btnSiguiente]="!!urlSiguiente" [btnAnterior]="!!urlAnterior" class="ml-auto mb-5"></app-botones>
         </div>
         <div class="row">
             <div class=" col-12 col-md-3 col-lg-2 px-2  mb-5" *ngFor="let lanzamiento of lanzamientos">
