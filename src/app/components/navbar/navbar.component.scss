@@ -1,38 +1,38 @@
 .navbar-color {
-  background-color: #262628;
+    background-color: #262628;
 }
 
 ::placeholder {
-  color: #8d8d92;
-  opacity: 1;
+    color: #8d8d92;
+    opacity: 1;
 }
 
 [type="search"] {
-  background-color: #323235;
+    background-color: #323235;
 }
 
 .input-control {
-  font-family: "Helvetica", FontAwesome, sans-serif;
+    font-family: "Helvetica", FontAwesome, sans-serif;
 }
 // caundoe esta enfocado cambio la letra a blanco
 
 input {
-  color: #ffffff;
-  border-color: transparent;
+    color: #ffffff;
+    border-color: transparent;
 }
 // caundoe esta enfocado cambio la letra a blanco
 
 // elimino el borde y lo cambio a gris
 input:focus {
-  outline: none;
-  border-color: #ffffff;
-  color: #ffffff;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 1);
+    outline: none;
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 1);
 }
 // elimino los estilos del input search
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }

@@ -1,0 +1,27 @@
+<h1 class="text-center text-light mt-4">Artistas Encontrados</h1>
+<div class="container" *ngIf="!cargando; else spinner">
+    <ng-container *ngIf="artistas!.length; else mensaje">
+        <div class="d-flex ">
+            <app-botones [btnSiguiente]="!!urlSiguiente" [btnAnterior]="!!urlAnterior"
+                (accion)="cambiarArtistas($event)" class="ml-auto mb-5"></app-botones>
+        </div>
+        <div class="row">
+            <div class=" col-12 col-md-3 col-lg-2 px-2  mb-5" *ngFor="let artista of artistas">
+                <div class="card">
+                    <img class="card-img-top" loading="lazy" width="172px" height="172px" [src]="validarImagen(artista)"
+                        alt="Portada artista">
+                    <div class="card-body px-0">
+                        <h5 class="card-title overflow-ellipsis">{{artista.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #mensaje>
+        <app-mensaje-alerta texto="No se encotraron artistas"></app-mensaje-alerta>
+    </ng-template>
+</div>
+
+<ng-template #spinner>
+    <app-loading></app-loading>
+</ng-template>

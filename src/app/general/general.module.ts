@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
 import { BotonesComponent } from './components/botones/botones.component';
-import { ListaCardsComponent } from './components/lista-cards/lista-cards.component';
-import { CardComponent } from './components/card/card.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './components/loading/loading.component';
+import { MensajeAlertaComponent } from './components/mensaje-alerta/mensaje-alerta.component';
 
 @NgModule({
-  declarations: [NavbarComponent, BotonesComponent, ListaCardsComponent, CardComponent],
-  imports: [
-    CommonModule
-  ]
+    declarations: [BotonesComponent, LoadingComponent, MensajeAlertaComponent],
+    imports: [
+        CommonModule,
+        HttpClientModule,
+
+    ],
+    exports: [BotonesComponent, LoadingComponent, MensajeAlertaComponent],
+
 })
 export class GeneralModule { }

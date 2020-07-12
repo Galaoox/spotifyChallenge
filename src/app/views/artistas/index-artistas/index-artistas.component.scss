@@ -1,0 +1,18 @@
+.card {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: transparent;
+}
+.card-text {
+    color: #707075;
+}
+
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 100%;
+}

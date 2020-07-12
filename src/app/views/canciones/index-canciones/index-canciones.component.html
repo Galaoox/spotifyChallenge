@@ -1,0 +1,22 @@
+<h1 class="text-center text-light mt-4">Canciones Encontradas</h1>
+<div class="container" *ngIf="!cargando; else spinner">
+    <ng-container *ngIf="canciones!.length; else mensaje">
+        <div class="d-flex ">
+            <app-botones [btnSiguiente]="!!urlSiguiente" [btnAnterior]="!!urlAnterior"
+                (accion)="cambiarCanciones($event)" class="ml-auto mb-5"></app-botones>
+        </div>
+        <div class="row">
+            <div *ngFor="let elemento of canciones" class="col-12 col-md-4 col-lg-3 px-2  mb-5">
+                <iframe [src]="validarUrl(elemento.id)" class="size-frame" frameborder="0" allowtransparency="true"
+                    allow="encrypted-media"></iframe>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #mensaje>
+        <app-mensaje-alerta texto="No se encotraron canciones"></app-mensaje-alerta>
+    </ng-template>
+</div>
+
+<ng-template #spinner>
+    <app-loading></app-loading>
+</ng-template>
