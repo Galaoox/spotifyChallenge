@@ -15,7 +15,6 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
     cargando = false;
     termino = '';
     buscadorSuscripcion: Subscription;
-
     constructor(private router: ActivatedRoute, private spotifyService: SpotifyService) { }
 
     ngOnInit(): void {
@@ -23,24 +22,20 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-
         this.buscadorSuscripcion.unsubscribe();
     }
 
     obtenerDatos(termino, endPoint = null) {
-
         this.cargando = true;
+        console.log(termino);
         this.artistas = [];
-        if (termino && termino !== '') {
+        if (termino && termino !== '' && termino !== ' ') {
             this.spotifyService.obtenerArtistas(termino, endPoint).subscribe(
                 (res: any) => {
-
                     this.cargando = false;
-
                     this.artistas = res.items;
                     this.urlAnterior = res.previous;
                     this.urlSiguiente = res.next;
-
                 },
                 (error) => {
                     console.log(error);
@@ -49,6 +44,7 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
             );
         } else {
             this.cargando = false;
+            this.termino = null;
         }
     }
 
@@ -58,7 +54,6 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
             this.urlAnterior = null;
             this.urlSiguiente = null;
             this.obtenerDatos(this.termino);
-
         });
     }
 
