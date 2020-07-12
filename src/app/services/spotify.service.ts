@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class SpotifyService {
-    private token;
     private credenciales = {
         grant_type: 'client_credentials',
         client_id: '4bd849ad70c2427fa3490d80254a0dba',
@@ -15,7 +14,6 @@ export class SpotifyService {
     };
 
     constructor(private httpClient: HttpClient) {
-        this.token = this.obtenerToken();
         this.getToken();
     }
 
