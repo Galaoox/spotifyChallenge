@@ -7,38 +7,42 @@ import { map } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class SpotifyService {
+    private token;
+    private credenciales = {
+        grant_type: 'client_credentials',
+        client_id: '4bd849ad70c2427fa3490d80254a0dba',
+        client_secret: '6b857fb86a8a4eeebd666066b9cadc3c'
+    };
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) {
+        this.token = this.obtenerToken();
+        this.getToken();
+    }
 
-    getToken() {
-        const credentials = {
-            grant_type: 'client_credentials',
-            client_id: 'f53fe62793324902ac1fccc18f728ce8',
-            client_secret: '5e9f638ddadb40b6acd10f6c46545363'
-        };
-
-        const url = 'https://accounts.spotify.com/api/token';
-
-
+    getToken(): Observable<any> {
+        const params = ('grant_type=client_credentials');
+        const encoded = btoa(this.credenciales.client_id + ':' + this.credenciales.client_secret);
         const headers = new HttpHeaders({
-            Authorization: `Basic ${btoa(credentials.client_id + ':' + credentials.client_secret)}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
+            Authorization: 'Basic ' + encoded,
+            'Content-Type': 'application/x-www-form-urlencoded;',
+            skip: 'true'
         });
-        const params = new HttpParams().set('grant_type', 'client_credentials'); // create params object
-        this.httpClient.post('https://accounts.spotify.com/api/token', { headers, params }).subscribe(
-            (res) => {
-                console.log(res);
-            }, (error) => {
-                console.log(error);
-            }
-        );
 
+
+
+        return this.httpClient.post('https://accounts.spotify.com/api/token', params, { headers });
+
+    }
+
+    obtenerToken() {
+        return localStorage.getItem('token');
     }
 
 
     get(endPoint: string): Observable<any> {
+        const token = this.obtenerToken();
         const headers = new HttpHeaders({
-            Authorization: 'Bearer BQBOjPMA_VZuTCuTaaRKbcf4foTeN-K_bJVb1fIDA6_mSeBZK5EC4BzCWTrWh1uzEE_YyiVLZLvNIvCx6Z8'
+            Authorization: `Bearer ${token}`
         });
         return this.httpClient.get(endPoint, { headers });
     }
