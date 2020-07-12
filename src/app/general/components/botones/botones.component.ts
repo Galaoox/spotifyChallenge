@@ -17,5 +17,4 @@ export class BotonesComponent implements OnInit {
     onClick(evento) {
         this.accion.emit(evento);
     }
-
 }

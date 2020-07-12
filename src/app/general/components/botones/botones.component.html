@@ -1,7 +1,9 @@
-<button type="button" (click)="onClick(false)" class="btn btn-dark btn-circle p-0 btn-icon mx-3">
+<button type="button" [disabled]="!this.btnAnterior" (click)="onClick(false)"
+    class="btn btn-dark btn-circle p-0 btn-icon mx-3">
     <i class="fa fa-angle-left" style="font-size: 25px;" aria-hidden="true"></i>
 </button>
 
-<button type="button" (click)="onClick(true)" class="btn btn-dark btn-circle p-0 btn-icon mx-3">
+<button type="button" [disabled]="!this.btnSiguiente" (click)="onClick(true)"
+    class="btn btn-dark btn-circle p-0 btn-icon mx-3">
     <i class="fa fa-angle-right " style="font-size: 25px;" aria-hidden="true"></i>
 </button>
