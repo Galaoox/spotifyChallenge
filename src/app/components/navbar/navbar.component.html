@@ -9,11 +9,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mx-sm-5 input-control" #buscadorArtistas size="40" type="search"
-                (input)="buscar(buscadorArtistas.value)" placeholder=" &#xF002; Buscar Artista" />
+        <form class="form-inline my-2 my-lg-0" [formGroup]="buscador">
+            <input class="form-control mx-sm-5 input-control" formControlName="artista" #buscadorArtistas size="40"
+                type="search" (input)="buscar()" placeholder=" &#xF002; Buscar Artista" />
             <input class="form-control mx-sm-5 input-control" #buscadorCanciones size="40" type="search"
-                (input)="buscar(buscadorCanciones.value,false)" placeholder=" &#xF002; Buscar Canción" />
+                (input)="buscar(false)" formControlName="cancion" placeholder=" &#xF002; Buscar Canción" />
         </form>
     </div>
 </nav>
