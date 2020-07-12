@@ -8,17 +8,19 @@ const routes: Routes = [
         loadChildren: () => import('./views/lanzamientos/lanzamientos.module').then(m => m.LanzamientosModule)
     },
     {
-        path: 'artistas/:termino',
+        path: 'artistas',
         loadChildren: () => import('./views/artistas/artistas.module').then(m => m.ArtistasModule)
     },
     {
-        path: 'canciones/:termino',
+        path: 'canciones',
         loadChildren: () => import('./views/canciones/canciones.module').then(m => m.CancionesModule)
     },
     {
-        path: 'discografia/',
+        path: 'discografia',
         loadChildren: () => import('./views/discografia/discografia.module').then(m => m.DiscografiaModule)
-    }
+    },
+    { path: '', pathMatch: 'full', redirectTo: '' },
+    { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
 @NgModule({
