@@ -27,7 +27,6 @@ export class IndexArtistasComponent implements OnInit, OnDestroy {
 
     obtenerDatos(termino, endPoint = null) {
         this.cargando = true;
-        console.log(termino);
         this.artistas = [];
         if (termino && termino !== '' && termino !== ' ') {
             this.spotifyService.obtenerArtistas(termino, endPoint).subscribe(
