@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../../services/spotify.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-index-lanzamientos',
@@ -14,7 +15,7 @@ export class IndexLanzamientosComponent implements OnInit {
     cargando = false;
 
 
-    constructor(private spotifyService: SpotifyService) { }
+    constructor(private spotifyService: SpotifyService, private router: Router) { }
 
     ngOnInit(): void {
         this.obtenerDatos();
@@ -42,7 +43,7 @@ export class IndexLanzamientosComponent implements OnInit {
 
 
     verDiscografia(artistaId) {
-        console.log(artistaId);
+        this.router.navigateByUrl('discografia/' + artistaId);
     }
 
 
