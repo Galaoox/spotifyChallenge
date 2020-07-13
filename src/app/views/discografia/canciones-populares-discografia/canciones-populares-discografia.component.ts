@@ -19,7 +19,6 @@ export class CancionesPopularesDiscografiaComponent implements OnInit {
     obtenerDatos() {
         this.spotifyService.obtenerTopCanciones(this.idArtista).subscribe(
             (res: any) => {
-                console.log(res);
                 this.canciones = res;
             },
             (error) => {
@@ -36,7 +35,6 @@ export class CancionesPopularesDiscografiaComponent implements OnInit {
 
     concatenarCero(texto) {
         texto = String(texto);
-        console.log(texto.length);
         return texto.length < 2 ? '0' + texto : texto;
     }
 
