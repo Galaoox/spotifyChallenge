@@ -1,1 +1,21 @@
-<p>canciones-populares-discografia works!</p>
+<h6 class="text-light">Canciones más populares</h6>
+<hr style="background-color: #707075; width: 70%; margin:0;" class="mb-1">
+<table class="table ">
+
+    <tbody>
+        <tr *ngFor="let cancion of  canciones; let i = index">
+            <td class="align-middle"><span style="font-size: 1.2em;">{{i+1}}</span></td>
+            <td class="align-middle"><img width="44px" height="44px" class="img-border"
+                    [src]="cancion.album.images[0].url" /></td>
+            <td class="align-middle">
+                <p class="my-0"><span class="text-light">{{cancion.name}}</span></p>
+                <p class="my-0">
+                    {{cancion.album.name}}
+                </p>
+            </td>
+            <td class="align-middle">
+                <span style="font-size: 1.2em;">{{convertirMsAMinutosSegundos(cancion.duration_ms)}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
