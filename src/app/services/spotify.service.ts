@@ -77,6 +77,15 @@ export class SpotifyService {
     }
 
 
+    obtenerArtistasRelacionados(id: string) {
+        const url = this.urlBase + `artists/${id}/related-artists`;
+        return this.get(url).pipe(
+            map(data => data.artists),
+            map((data) => data.slice(0, 4))
+        );
+    }
+
+
 
 
 }
