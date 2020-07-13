@@ -8,9 +8,9 @@
         <div class="row">
             <div class=" col-12 col-md-3 col-lg-2 px-2  mb-5" *ngFor="let artista of artistas">
                 <div class="card">
-                    <img class="card-img-top" loading="lazy" width="172px" height="172px" [src]="validarImagen(artista)"
-                        alt="Portada artista">
-                    <div class="card-body px-0">
+                    <img class="card-img-top mb-2" loading="lazy" width="172px" height="172px"
+                        [src]="validarImagen(artista)" alt="Portada artista">
+                    <div class="card-body p-0">
                         <h5 class="card-title overflow-ellipsis">{{artista.name}}</h5>
                     </div>
                 </div>

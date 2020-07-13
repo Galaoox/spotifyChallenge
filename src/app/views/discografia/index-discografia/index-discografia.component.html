@@ -1,12 +1,12 @@
-<div class="container mb-5">
+<div class="container-fluid mb-5">
     <div class="row mt-5 ">
-        <div class="col-12 col-md-4 text-light">
+        <div class="col-12 col-md-4 text-light ">
             <app-informacion-discografia [idArtista]="id"></app-informacion-discografia>
         </div>
-        <div class="col-12 col-md-8 row text-light">
+        <div class="col-12 col-md-8 row text-light px-0">
 
             <div class="col-12">
-                <app-albums-discografia></app-albums-discografia>
+                <app-albums-discografia [idArtista]="id"></app-albums-discografia>
                 <hr style="background-color: #707075; width: 100%;">
 
             </div>

@@ -17,9 +17,18 @@
     height: 172px;
 }
 
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .card-img-top {
         height: 100%;
+    }
+    .albums-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 1fr);
     }
 }

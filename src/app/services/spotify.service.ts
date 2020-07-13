@@ -85,6 +85,11 @@ export class SpotifyService {
         );
     }
 
+    obtenerAlbumsArtista(endPoint, id) {
+        const url = endPoint ? endPoint : this.urlBase + `artists/${id}/albums?limit=5`;
+        return this.get(url);
+    }
+
 
 
 

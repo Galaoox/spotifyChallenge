@@ -1,1 +1,28 @@
-<p>albums-discografia works!</p>
+<h6 class="text-left text-light mb-0 ml-2">Albums</h6>
+<div class="" *ngIf="!cargando; else spinner">
+    <ng-container *ngIf="albums!.length; else mensaje">
+        <div class="d-flex ">
+            <app-botones [btnSiguiente]="!!urlSiguiente" [btnAnterior]="!!urlAnterior" (accion)="cambiarAlbums($event)"
+                class="ml-auto mb-3"></app-botones>
+        </div>
+        <div class="albums-grid">
+            <div class="   px-2" *ngFor="let album of albums">
+                <div class="card">
+                    <img class="card-img-top mb-2" loading="lazy" width="172px" height="172px"
+                        [src]="album.images[1].url" alt="Portada album">
+                    <div class="card-body p-0">
+                        <h5 class="card-title overflow-ellipsis mb-0">{{album.name}}</h5>
+                        <p class="card-text overflow-ellipsis">{{obtenerAno(album.release_date)}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #mensaje>
+        <app-mensaje-alerta texto="No se encotraron albums"></app-mensaje-alerta>
+    </ng-template>
+</div>
+
+<ng-template #spinner>
+    <app-loading></app-loading>
+</ng-template>

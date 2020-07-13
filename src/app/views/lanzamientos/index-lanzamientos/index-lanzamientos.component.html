@@ -8,9 +8,9 @@
         <div class="row">
             <div class=" col-12 col-md-3 col-lg-2 px-2  mb-5" *ngFor="let lanzamiento of lanzamientos">
                 <div class="card" style="cursor:pointer" (click)="verDiscografia(lanzamiento.artists[0].id)">
-                    <img class="card-img-top" loading="lazy" [src]="lanzamiento.images[1].url" alt="Portada album">
-                    <div class="card-body px-0">
-                        <h5 class="card-title overflow-ellipsis">{{lanzamiento.name}}</h5>
+                    <img class="card-img-top mb-1" loading="lazy" [src]="lanzamiento.images[1].url" alt="Portada album">
+                    <div class="card-body p-0">
+                        <h5 class="card-title overflow-ellipsis mb-0">{{lanzamiento.name}}</h5>
                         <p class="card-text overflow-ellipsis">{{lanzamiento.artists[0].name}}</p>
                     </div>
                 </div>

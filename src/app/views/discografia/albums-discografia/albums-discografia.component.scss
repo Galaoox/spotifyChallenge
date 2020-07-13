@@ -1,0 +1,26 @@
+.card {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: transparent;
+}
+.card-text {
+    color: #707075;
+}
+
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+}
+
+@media only screen and (max-width: 768px) {
+    .albums-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 360px);
+    }
+}
