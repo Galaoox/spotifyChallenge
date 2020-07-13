@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./index-discografia.component.scss']
 })
 export class IndexDiscografiaComponent implements OnInit {
-
+    id: string;
     constructor(private router: ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -15,7 +15,7 @@ export class IndexDiscografiaComponent implements OnInit {
     }
 
     obtenerid() {
-        console.log(this.router.snapshot.params.id);
+        this.id = this.router.snapshot.params.id;
     }
 
 }
