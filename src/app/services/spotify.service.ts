@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,7 @@ export class SpotifyService {
         client_id: '4bd849ad70c2427fa3490d80254a0dba',
         client_secret: '6b857fb86a8a4eeebd666066b9cadc3c'
     };
+    urlBase = 'https://api.spotify.com/v1/';
 
     constructor(private httpClient: HttpClient) {
         this.getToken();
@@ -41,25 +42,40 @@ export class SpotifyService {
     }
 
     obtenerLanzamientos(endPoint = null) {
-        const url = endPoint ? endPoint : 'https://api.spotify.com/v1/browse/new-releases?limit=12';
+        const url = endPoint ? endPoint : this.urlBase + 'browse/new-releases?limit=12';
         return this.get(url).pipe(
             map(datos => datos.albums)
         );
     }
 
     obtenerCanciones(termino: string, endPoint = null) {
-        const url = endPoint ? endPoint : `https://api.spotify.com/v1/search?q=${termino}&type=track&limit=8`;
+        const url = endPoint ? endPoint : this.urlBase + `search?q=${termino}&type=track&limit=8`;
         return this.get(url).pipe(
             map(data => data.tracks)
         );
     }
 
     obtenerArtistas(termino: string, endPoint = null) {
-        const url = endPoint ? endPoint : `https://api.spotify.com/v1/search?q=${termino}&type=artist&limit=12`;
+        const url = endPoint ? endPoint : this.urlBase + `search?q=${termino}&type=artist&limit=12`;
         return this.get(url).pipe(
             map(data => data.artists)
         );
     }
+
+
+    obtenerInfoArtista(id: string) {
+        const url = this.urlBase + 'artists/' + id;
+        return this.get(url);
+    }
+
+    obtenerTopCanciones(id: string) {
+        const url = this.urlBase + `artists/${id}/top-tracks?country=CO`;
+        return this.get(url).pipe(
+            map(data => data.tracks),
+            map((data) => data.slice(0, 5))
+        );
+    }
+
 
 
 
