@@ -1,6 +1,8 @@
 .table {
     background-color: transparent;
     color: #8f8e94;
+    width: 100%;
+    display: table;
 }
 
 td {
@@ -9,4 +11,9 @@ td {
 }
 .img-border {
     border-radius: calc(0.5rem - 1px);
+}
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
