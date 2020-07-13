@@ -1,0 +1,48 @@
+.card {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.img-artista {
+    width: 50%;
+    height: 50%;
+}
+.img-relacionados {
+    width: 64px;
+    height: 64px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .img-artista {
+        width: 100%;
+        height: 100%;
+    }
+    .img-relacionados {
+        width: 124px;
+        height: 124px;
+    }
+}
+
+.overflow-scroll {
+    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    height: 200px;
+}
+
+#custom-scroll::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #464647;
+}
+
+#custom-scroll::-webkit-scrollbar {
+    width: 6px;
+    background-color: #464647;
+}
+
+#custom-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #d9d7d7;
+}
